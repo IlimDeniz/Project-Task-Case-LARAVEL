@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('project_id');
+            $table->string('name', 50);
+            $table->text('description');
+            $table->enum('status', ['todo,', 'in-progress', 'done']);
             $table->timestamps();
         });
     }
