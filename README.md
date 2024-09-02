@@ -2,6 +2,11 @@
 
 NOTE: I was very ill over the past week, and unfortunately, I had to spend all my time dealing with my illness. As a result, I wasn't able to dedicate any time to the projects I was working on. Most of my time was spent battling the illness, so I was unable to complete the update section for the task area. Due to the limited time I had, I also could not spend much time on the documentation. I apologize for this inconvenience. Wishing you all the best in your work.
 
+Dashboard Username: demo@gmail.com
+Dashboard Password: 12345678
+
+You can create new user with /register
+
 Getting Started Guide
 1. Clone the Project
 
