@@ -1,66 +1,80 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+İLİM DENİZ TOPRAK - PROJECT
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+NOTE: I was very ill over the past week, and unfortunately, I had to spend all my time dealing with my illness. As a result, I wasn't able to dedicate any time to the projects I was working on. Most of my time was spent battling the illness, so I was unable to complete the update section for the task area. Due to the limited time I had, I also could not spend much time on the documentation. I apologize for this inconvenience. Wishing you all the best in your work.
 
-## About Laravel
+Getting Started Guide
+1. Clone the Project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+To clone the project to your local machine, use the following command:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+git clone https://github.com/IlimDeniz/project.git
+2. Install Dependencies
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Navigate to the project directory and install the required PHP dependencies using Composer:
 
-## Learning Laravel
+composer install
+3. Set Up the Database
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Configure your database settings in the .env file. After updating the file with your MySQL credentials, run the migration command to set up the database schema:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+php artisan migrate
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Alternatively, you can use the provided SQL script to set up the database. The SQL file is available in the repository.
+Project Overview
 
-## Laravel Sponsors
+This project uses the CORK template, which includes HTML, CSS, Bootstrap, and jQuery for the front end. The backend is built using the PHP/Laravel framework. The Repository pattern is employed as a design pattern in this project.
+Repository Pattern Usage
+Overview
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+The Repository Pattern separates data access code from business logic, making your application's code cleaner, more maintainable, and testable. This pattern provides an interface for accessing data sources and manages data access operations independently from other parts of your application.
+Project Structure
 
-### Premium Partners
+    app/Repositories: Contains repository classes that manage data access operations.
+    app/Models: Contains the models.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Repositories Used
+ProjectRepository
 
-## Contributing
+The ProjectRepository class manages data access operations for the Project model. It provides the following functionalities:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    getAllProjects(): Retrieves all projects.
+    getProjectById($id): Finds a project by its ID.
+    createProject(array $data): Creates a new project.
+    updateProject($id, array $data): Updates a project by its ID.
+    deleteProject($id): Deletes a project by its ID.
 
-## Code of Conduct
+TaskRepository
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+The TaskRepository class manages data access operations for the Task model. It provides the following functionalities:
 
-## Security Vulnerabilities
+    getAllTasks(): Retrieves all tasks.
+    getTaskById($id): Finds a task by its ID.
+    createTask(array $data): Creates a new task.
+    updateTask($id, array $data): Updates a task by its ID.
+    deleteTask($id): Deletes a task by its ID.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Usage Example
 
-## License
+To perform operations on projects and tasks, you can use the respective repositories. For instance, to create a project, you can use the ProjectRepository class within the ProjectController to manage data access operations.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This structure separates data access code from business logic, making your application code more readable and manageable.
+
+Route List
+
+GET|HEAD        projectDetail/{id} ................................................................ project.detail › DashboardController@projectDetail
+  GET|HEAD        projects .................................................................................... projects.index › ProjectController@index
+  POST            projects .................................................................................... projects.store › ProjectController@store
+  GET|HEAD        projects/create ........................................................................... projects.create › ProjectController@create
+  GET|HEAD        projects/{project} ............................................................................ projects.show › ProjectController@show
+  PUT|PATCH       projects/{project} ........................................................................ projects.update › ProjectController@update
+  DELETE          projects/{project} ...................................................................... projects.destroy › ProjectController@destroy
+  GET|HEAD        projects/{project}/edit ....................................................................... projects.edit › ProjectController@edit
+
+
+  GET|HEAD        tasks ............................................................................................. tasks.index › TaskController@index
+  POST            tasks ............................................................................................. tasks.store › TaskController@store
+  GET|HEAD        tasks/create .................................................................................... tasks.create › TaskController@create
+  GET|HEAD        tasks/{task} ........................................................................................ tasks.show › TaskController@show
+  PUT|PATCH       tasks/{task} .................................................................................... tasks.update › TaskController@update
+  DELETE          tasks/{task} .................................................................................. tasks.destroy › TaskController@destroy
+  GET|HEAD        tasks/{task}/edit ................................................................................... tasks.edit › TaskController@edit

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->tinyInteger('project_id');
             $table->string('name', 50);
             $table->text('description');
-            $table->enum('status', ['todo,', 'in-progress', 'done']);
+            $table->enum('status', ['todo', 'in-progress', 'done']);
             $table->timestamps();
         });
     }
